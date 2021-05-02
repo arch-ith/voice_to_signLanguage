@@ -2,7 +2,7 @@ from conf import SAMPLE_INPUTS,SAMPLE_OUTPUTS
 from moviepy.editor import *
 import glob, os
 
-s = "call become"
+s = "call Me"
 s= list(s.split(" "))
 c=0
 dic = {}

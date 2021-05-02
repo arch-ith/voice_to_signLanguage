@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.common.keys import Keys
 # !Make sure you use same VERSION OF CHROME AND DRIVER
 def getLink(word):
-    word="allotment"
+    word="accept"
     PATH ="D:\chromedriver.exe"
     driver =webdriver.Chrome(PATH)
     #link to get video
