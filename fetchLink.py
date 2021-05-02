@@ -18,5 +18,5 @@ def getLink(word):
     value_xpath=driver.find_element_by_xpath("/html/body/div/div[2]/div/div/div[1]/main/article/div/div/div/iframe")
     link=value_xpath.get_attribute('src')
     print(link) 
-    return link 
-getLink("help")
+    driver.quit()
+    return link  
