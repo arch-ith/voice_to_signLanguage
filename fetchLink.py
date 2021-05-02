@@ -1,10 +1,10 @@
+from conf import DRIVER_DIR
 from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 # !Make sure you use same VERSION OF CHROME AND DRIVER
 def getLink(word):
-    word="accept"
-    PATH ="D:\chromedriver.exe"
+    PATH =DRIVER_DIR
     driver =webdriver.Chrome(PATH)
     #link to get video
     time.sleep(2)
@@ -17,3 +17,4 @@ def getLink(word):
     value=value_xpath.get_attribute('innerHTML')
     print(value.strip())
     return link
+getLink("accept")
