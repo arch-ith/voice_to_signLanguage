@@ -41,5 +41,4 @@ def getLink(word):
         return link 
     except NoSuchElementException:
         print("Element not found")
-    driver.quit() 
-getLink("word")
+    driver.quit()  
