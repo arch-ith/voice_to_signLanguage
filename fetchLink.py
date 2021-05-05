@@ -11,7 +11,7 @@ def getLink(word):
     option = webdriver.ChromeOptions()
     option.add_argument('headless')
     driver = webdriver.Chrome(PATH,options=option)
-    #link to get video
+    #link to get videoptions=option
     time.sleep(1)  
     driver.get('https://www.talkinghands.co.in/video/'+word)
     time.sleep(2) 
@@ -23,14 +23,16 @@ def getLink(word):
     except NoSuchElementException:
         print("Not found in talking hands") 
     
-    """driver.get("https://www.talkinghands.co.in/video/"+word+"mp4")
+    driver.get("https://www.talkinghands.co.in/video/"+word+"mp4")
     try:
         value_xpath=driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/div/div[1]/div/div/div/video/source')
         link=value_xpath.get_attribute('src') 
         print(link)
         return link
     except NoSuchElementException:
-        print("Element not found") """
+        print("Element not found")
+
+    
     driver.get("https://indiansignlanguage.org/"+word+"/") 
     time.sleep(1)  
     try:
@@ -43,4 +45,3 @@ def getLink(word):
     driver.quit() 
     print("Link not found")
     return"lnf"
-getLink("arise")
