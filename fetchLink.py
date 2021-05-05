@@ -16,7 +16,7 @@ def getLink(word):
     driver.get('https://www.talkinghands.co.in/video/'+word)
     time.sleep(2) 
     try:  
-        value_xpath=driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/div[1]/div/div/div/div[13]/div[2]/div/div/div/iframe')
+        value_xpath=driver.find_element_by_xpath('/html/body/div[1]/div/div[3]/div[2]/div/a')
         link=value_xpath.get_attribute('src')
         print(link)
         return link
@@ -43,3 +43,4 @@ def getLink(word):
     driver.quit() 
     print("Link not found")
     return"lnf"
+getLink("arise")
