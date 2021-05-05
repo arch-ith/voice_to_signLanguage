@@ -6,9 +6,9 @@ import os
 #https://indiansignlanguage.org/search-dictionary/
 #  (element name in indiansignlanguage.org)
 os.chdir(SAMPLE_INPUTS)
-word = "call become"
-word = list(word.split(" "))
-for w in word:
-    link=fetchLink.getLink(w)
-    clip = YouTube(link)
-    clip.streams.first().download()
+def downloader(word):
+    word = list(word.split(" "))
+    for w in word:
+        link=fetchLink.getLink(w)
+        clip = YouTube(link)
+        clip.streams.first().download()
