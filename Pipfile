@@ -8,6 +8,7 @@ moviepy = "*"
 pillow = "*"
 pytube = "*"
 selenium = "*"
+speechrecognition = "*"
 
 [dev-packages]
 
