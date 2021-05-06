@@ -13,24 +13,15 @@ def getLink(word):
     driver = webdriver.Chrome(PATH,options=option)
     #link to get video
     time.sleep(1)  
-    driver.get('https://www.talkinghands.co.in/video/'+word)
-    time.sleep(2) 
-    try:  
-        value_xpath=driver.find_element_by_xpath('/html/body/div[1]/div/div[3]/div[2]/div/a')
-        link=value_xpath.get_attribute('src')
-        print(link)
-        return link
-    except NoSuchElementException:
-        print("Not found in talking hands") 
-    
-    """driver.get("https://www.talkinghands.co.in/video/"+word+"mp4")
+     
+    driver.get("https://www.talkinghands.co.in/video/"+word+"mp4")
     try:
         value_xpath=driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/div/div[1]/div/div/div/video/source')
         link=value_xpath.get_attribute('src') 
         print(link)
         return link
     except NoSuchElementException:
-        print("Element not found") """
+        print("Not found in talking hands") 
     driver.get("https://indiansignlanguage.org/"+word+"/") 
     time.sleep(1)  
     try:
@@ -39,8 +30,7 @@ def getLink(word):
         print(link)
         return link 
     except NoSuchElementException:
-        print("Not found in isl")
-    driver.quit() 
-    print("Link not found")
-    return"lnf"
-getLink("arise")
+        print("Not found in isl") 
+    print("Link not found") 
+    driver.close() 
+    return "lnf"
