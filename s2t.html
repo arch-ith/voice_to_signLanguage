@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <form action="/speach" method="post">
+            <h1 class="text-center mt-5">Speech to text</h1>
+                <div class="form group mt-3">
+                    <textarea type="" id="textbox" name="textbox" class="form-control" rows="5"></textarea>
+                </div>
+                <div class="form group mt-1">
+                    <button  id="start-btn" class="btn btn-dark btn-block">Start</button>
+                    <button type ="button" id="cancel-btn" class="btn btn-secondary btn-block">Cancel</button>
+                </div> 
+                <input type="submit">
+        </form>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</html>

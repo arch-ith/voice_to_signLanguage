@@ -33,4 +33,4 @@ def getLink(word):
         print("Not found in isl") 
     print("Link not found") 
     driver.close() 
-    return "lnf"
+    return "lnf" 
