@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait  # for implicit and expl
 from selenium.webdriver.chrome.options import Options  # for suppressing the browser
 # !Make sure you use same VERSION OF CHROME AND DRIVER
 def getLink(word):
+    print("recives word is"+word+"\n")
     PATH =DRIVER_DIR 
     option = webdriver.ChromeOptions()
     option.add_argument('headless')

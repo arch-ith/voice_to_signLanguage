@@ -8,24 +8,24 @@ const port = 3000
 //ajax spaech recog file
 app.get("/", function (req, res) { 
   res.sendFile(path.join(__dirname+"/s2t.html")); 
-}); 
-// Parse URL-encoded bodies (as sent by HTML forms)
+});  
 app.use(express.urlencoded());
-
-// Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 var inputLine;
+app.get("/script.js",(req,res)=>{ 
+  res.sendFile(path.join(__dirname+"/server.js")); 
+})
 app.post("/speach", function (req, res) { 
   inputLine=req.body.textbox; 
+  console.log(inputLine)
   res.sendFile(path.join(__dirname+"/done.html")); 
 }); 
 //req Video
 app.get("/video", function (req, res) {
-    //creating video
-    /*
+    //creating video 
     var dataToSend;
     // spawn new child process to call the python script
-    const python = spawn('python', ['speech_recog.py']);///parametrs required
+    const python = spawn('python', ['speech_recog.py',inputLine]);///parametrs required in python ==sys.argv[1]
     // collect data from script
     python.stdout.on('data', function (data) {
       console.log('Pipe data from python script ...');
@@ -33,7 +33,7 @@ app.get("/video", function (req, res) {
     });
     // in close event we are sure that stream from child process is closed
     python.on('close', (code) => {
-    console.log(`child process close all stdio with code ${code}`);})*/
+    console.log(`child process close all stdio with code ${code}`);})
     ////////////////////////////////////////////////////////////////////end of python    
     // Ensure there is a range given for the video 
     const range = req.headers.range;
