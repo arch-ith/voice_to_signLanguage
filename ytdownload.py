@@ -5,8 +5,6 @@ import os
 import re,wget
 
 
-#https://indiansignlanguage.org/search-dictionary/
-#  (element name in indiansignlanguage.org)
 os.chdir(SAMPLE_INPUTS)
 def downloader(word):
     word = list(word.split(" "))
