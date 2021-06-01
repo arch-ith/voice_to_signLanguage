@@ -7,12 +7,14 @@ from selenium.webdriver.support.ui import WebDriverWait  # for implicit and expl
 from selenium.webdriver.chrome.options import Options  # for suppressing the browser
 # !Make sure you use same VERSION OF CHROME AND DRIVER
 def getLink(word):
+    print("recives word is"+word+"\n")
     PATH =DRIVER_DIR 
     option = webdriver.ChromeOptions()
     option.add_argument('headless')
     driver = webdriver.Chrome(PATH,options=option)
     #link to get videoptions=option
     time.sleep(1)  
+<<<<<<< HEAD
     driver.get('https://www.talkinghands.co.in/video/'+word)
     time.sleep(2) 
     try:  
@@ -23,6 +25,9 @@ def getLink(word):
     except NoSuchElementException:
         print("Not found in talking hands") 
     
+=======
+     
+>>>>>>> 483d0c86b92de6df260b3c989549245d5fcc364e
     driver.get("https://www.talkinghands.co.in/video/"+word+"mp4")
     try:
         value_xpath=driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/div/div[1]/div/div/div/video/source')
@@ -30,9 +35,13 @@ def getLink(word):
         print(link)
         return link
     except NoSuchElementException:
+<<<<<<< HEAD
         print("Element not found")
 
     
+=======
+        print("Not found in talking hands") 
+>>>>>>> 483d0c86b92de6df260b3c989549245d5fcc364e
     driver.get("https://indiansignlanguage.org/"+word+"/") 
     time.sleep(1)  
     try:
@@ -41,7 +50,14 @@ def getLink(word):
         print(link)
         return link 
     except NoSuchElementException:
+<<<<<<< HEAD
         print("Not found in isl")
     driver.quit() 
     print("Link not found")
     return"lnf"
+=======
+        print("Not found in isl") 
+    print("Link not found") 
+    driver.close() 
+    return "lnf" 
+>>>>>>> 483d0c86b92de6df260b3c989549245d5fcc364e

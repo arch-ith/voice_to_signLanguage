@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container"> 
+        <form action="/speach" method="POST">
+            <h1 class="text-center mt-5">Speech to text</h1>
+                <div class="form group mt-3">
+                    <textarea type="" id="textbox" name="textbox" class="form-control" rows="5"></textarea>
+                </div>
+                <div class="form group mt-1">
+                    <input type="button"  id="start-btn" class="btn btn-dark btn-block" value="Start">
+                    <input type ="button" id="cancel-btn" class="btn btn-secondary btn-block" value="Cancel">
+                    <button  id="generate-btn" class="btn btn-dark btn-block">Generate</button>
+                </div>  
+            </form>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+
+    var recognition = new SpeechRecognition();
+
+    var textbox = $("#textbox")
+    var startbtn =$("#start-btn")
+
+
+    var content =''
+    recognition.continuous = false
+
+    recognition.onstart =function(){
+        startbtn.text("Stop")
+        $('#start-btn').attr('start-btn','stop-btn');
+    }
+
+    recognition.onspeechend = function() {
+        startbtn.text("Start")
+        $("#stop-btn").toggleClass('btn btn-dark btn-block');
+    }
+
+    recognition.onerror = function(){
+        startbtn.text("Try again")
+    }
+
+    recognition.onresult = function(event){
+        var current = event.resultIndex;
+        var transcript =event.results[current][0].transcript
+
+        content +=transcript
+        textbox.val(content)
+    }
+
+    $("#generate-btn").click(function(event){
+        
+    })
+
+    $("#start-btn").click(function(event){
+        if (content.length){
+            content += ''
+        }
+        $('#start-btn').attr('start-btn','stop-btn');
+        recognition.start()
+    })
+
+    $("#cancel-btn").click(function(event){
+        textbox.val('')
+        content=''
+    })
+</script>
+</html>
