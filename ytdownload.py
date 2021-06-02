@@ -3,6 +3,8 @@ from pytube import YouTube
 from conf import SAMPLE_INPUTS,SAMPLE_OUTPUTS
 import os
 import re,wget
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 
 os.chdir(SAMPLE_INPUTS)
@@ -15,3 +17,4 @@ def downloader(word):
             clip.streams.first().download()
         else:
             wget.download(link,out=SAMPLE_INPUTS)
+

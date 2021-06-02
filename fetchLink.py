@@ -9,24 +9,27 @@ from selenium.webdriver.chrome.options import Options  # for suppressing the bro
 def getLink(word):
     print("recives word is "+word+"\n")
     PATH =DRIVER_DIR  
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--ignore-ssl-errors=yes')
+    options = Options()
+    #options.add_argument('--headless')
+    options.add_argument('--allow-running-insecure-content')
+    options.add_argument('--ignore-ssl-errors')
     options.add_argument('--ignore-certificate-errors')
     driver = webdriver.Chrome(PATH,options=options)
     #link to get videoptions=option 
     
-    time.sleep(2) 
+
     """driver.get('https://www.talkinghands.co.in/video/'+word)
+    time.sleep(0.5)
     try:  
         value_xpath=driver.find_element_by_xpath('/html/body/div[1]/div/div[3]/div[2]/div/a')
         link=value_xpath.get_attribute('src')
         print(link)
         return link
     except NoSuchElementException:
-        print("Not found in talking hands") 
-    """
+        print("Not found in talking hands")"""
+
     driver.get("https://www.talkinghands.co.in/video/"+word+"mp4")
+    time.sleep(0.5)
     try:
         value_xpath=driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/div/div[1]/div/div/div/video/source')
         link=value_xpath.get_attribute('src') 
@@ -34,8 +37,9 @@ def getLink(word):
         return link
     except NoSuchElementException:
         print("Not found in talking hands") 
-    driver.get("https://indiansignlanguage.org/"+word+"/") 
-    time.sleep(2)  
+
+    driver.get("http://indiansignlanguage.org/"+word+"/") 
+    time.sleep(0.5)  
     try:
         value_xpath=driver.find_element_by_xpath("/html/body/div/div[2]/div/div/div[1]/main/article/div/div/div/iframe")
         link=value_xpath.get_attribute('src')

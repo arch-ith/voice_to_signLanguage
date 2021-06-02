@@ -1,3 +1,6 @@
 node_modules/
 jars/ 
 __pycache__/
+trim.py
+sizetest.py
+map.py
