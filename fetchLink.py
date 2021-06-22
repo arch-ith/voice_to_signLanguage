@@ -39,7 +39,7 @@ def getLink(word):
         print("Not found in talking hands") 
 
     driver.get("http://indiansignlanguage.org/"+word+"/") 
-    time.sleep(0.5)  
+    time.sleep(1.0)  
     try:
         value_xpath=driver.find_element_by_xpath("/html/body/div/div[2]/div/div/div[1]/main/article/div/div/div/iframe")
         link=value_xpath.get_attribute('src')
@@ -49,4 +49,4 @@ def getLink(word):
         print("Not found in isl") 
     print("Link not found") 
     driver.close() 
-    return "lnf"  
+    return 0  
