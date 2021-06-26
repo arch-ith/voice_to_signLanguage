@@ -77,6 +77,7 @@ async function python(){
   pyprog.stdout.on('data', function(data) {
       console.log("success **********\n"+data);
       success(data);
+      
   });
 
   pyprog.stderr.on('data', (data) => {
