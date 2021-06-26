@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "18d86a49327bb5747b4a70c0b7604bc5f2eab0b025281de1ec201792b0486f41"
+            "sha256": "3e7ae1f141112b36fd3bcc7d9a59d3c4d7ad22b1fbec24c360d2264a0eba5c70"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.9"
+            "python_version": "3.8"
         },
         "sources": [
             {
@@ -150,11 +150,11 @@
         },
         "pytube": {
             "hashes": [
-                "sha256:d0b35f70238d7ba078d4f44a5f7dd1544b873101d3f28961d21fc16936b6c575",
-                "sha256:d8a74143af0db76f9a1917aec7862f7044de3b470c89bb25d6a3eb25d4e51cb5"
+                "sha256:36fd7749e5f1284325816a12f9fe075b2cc26110628b981e02c92cd1de2197b7",
+                "sha256:41ea02f79f133fec332780ad12c0ff88794b2d00db4ed861274c9a12346be581"
             ],
             "index": "pypi",
-            "version": "==10.8.3"
+            "version": "==10.8.4"
         },
         "requests": {
             "hashes": [

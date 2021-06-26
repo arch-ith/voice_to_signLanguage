@@ -5,7 +5,7 @@ import glob, os
 
 os.chdir(SAMPLE_INPUTS)
 for file in glob.glob("*.mp4"):
-    if file=="become.mp4":
+    if file=="alpha.mp4":
         clip=VideoFileClip(file)
-        ffmpeg_extract_subclip("become.mp4", 0, 3, targetname="BECOME1.mp4")
+        ffmpeg_extract_subclip("num.mp4", 5,7, targetname="numbers/3.mp4")
 

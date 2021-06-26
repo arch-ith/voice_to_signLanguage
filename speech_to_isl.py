@@ -129,6 +129,8 @@ with sr.Microphone() as source:
     except:
         print("Sorry could not recognize what you said")
 
+
+
 input_string = text.capitalize()
 # input_string = input_string.lower()
 isl_parsed_token_list = convert_eng_to_isl(input_string)
