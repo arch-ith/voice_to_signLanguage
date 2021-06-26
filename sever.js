@@ -1,10 +1,12 @@
 const {spawn} = require('child_process');
+const util = require('util')
 const express = require("express");
 const path = require('path');
 var bodyParser = require('body-parser');
 const app = express();
 const fs = require("fs"); 
 const port = 3000
+
 //ajax spaech recog file
 app.get("/", function (req, res) { 
   res.sendFile(path.join(__dirname+"/s2t.html")); 
@@ -20,21 +22,12 @@ app.post("/speach", function (req, res) {
   console.log(inputLine)
   res.sendFile(path.join(__dirname+"/done.html")); 
 }); 
+
 //req Video
 app.get("/video", function (req, res) {
     //creating video 
     var dataToSend;
-    // spawn new child process to call the python script
-    const python = spawn('python', ['speech_recog.py',inputLine]);///parametrs required in python ==sys.argv[1]
-    // collect data from script
-    python.stdout.on('data', function (data) {
-      console.log('Pipe data from python script ...');
-      dataToSend = data.toString();
-    });
-    // in close event we are sure that stream from child process is closed
-    python.on('close', (code) => {
-    console.log(`child process close all stdio with code ${code}`);})
-    ////////////////////////////////////////////////////////////////////end of python    
+    python().then(function(fromRunpy) { 
     // Ensure there is a range given for the video 
     const range = req.headers.range;
     if (!range) {
@@ -42,7 +35,8 @@ app.get("/video", function (req, res) {
     }
   
     // get video stats (about 61MB)
-    const videoPath = "clipg.mp4";
+    const videoPath = path.join(__dirname)+"/data/samples/output/clipg.mp4";
+    console.log(videoPath.isFile());
     const videoSize = fs.statSync("clipg.mp4").size;
   
     // Parse Range
@@ -67,15 +61,28 @@ app.get("/video", function (req, res) {
     const videoStream = fs.createReadStream(videoPath, { start, end });
   
     // Stream the video chunk to the client
-    videoStream.pipe(res);
+    videoStream.pipe(res); 
+  } 
   
-})
-/*
-app.get('/', (req, res) => {
- 
- 
- // send data to browser
- res.send(dataToSend)
- });
- */
+  ).catch( ()=> {
+    console.log("Promise Rejected");
+});;
+  
+}) 
+//Python promisifying  
+async function python(){
+ return new Promise(async function(success, nosuccess) { 
+  const { spawn } = require('child_process');
+  const pyprog = spawn('python', ['speech_recog.py',inputLine]);///parametrs required in python ==sys.argv[1] 
+  pyprog.stdout.on('data', function(data) {
+      console.log("success **********\n"+data);
+      success(data);
+  });
+
+  pyprog.stderr.on('data', (data) => {
+    console.log("err"+data);
+      nosuccess(data);
+  });
+}); 
+}
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
