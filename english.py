@@ -1,8 +1,8 @@
 import os
 import nltk
-import speech_recognition as sr
 from nltk.parse.stanford import StanfordParser
 from nltk.stem import WordNetLemmatizer
+from nltk.stem import PorterStemmer
 from nltk.tree import *
 from conf import JAR_DIR
 # from nltk.parse.corenlp import stanford
@@ -12,8 +12,10 @@ os.environ['STANFORD_MODELS'] = JAR_DIR
 os.environ['JAVAHOME'] = "C:/Program Files/Java/jdk-12.0.1/bin/java.exe"
 nltk.download('wordnet')
 
+text = ""
+
 def filter_stop_words(words):
-    stopwords_set = set(['a', 'an','am', 'the','for', 'is','be','to'])
+    stopwords_set = set(['a', 'an','am', 'The', 'is','for','to'])
     # stopwords_set = set(stopwords.words("english"))
     words = list(filter(lambda x: x not in stopwords_set, words))
     return words
@@ -21,11 +23,12 @@ def filter_stop_words(words):
 
 def lemmatize_tokens(token_list):
     lemmatizer = WordNetLemmatizer()
+    ps = PorterStemmer()
     lemmatized_words = []
     for token in token_list:
+        #token=ps.stem(token)
         token = lemmatizer.lemmatize(token)
         lemmatized_words.append(lemmatizer.lemmatize(token,pos="v"))
-
     return lemmatized_words
 
 
@@ -82,7 +85,7 @@ def modify_tree_structure(parent_tree):
 
 def convert_eng_to_isl(input_string):
 
-    if len(list(input_string.split(' '))) is 1:
+    if len(list(input_string.split(' '))) == 1:
         return list(input_string.split(' '))
 
     # Initializing stanford parser
@@ -123,15 +126,16 @@ def pre_process(sentence):
 
 def isl(text):
     input_string = text.capitalize()
-    # input_string = input_string.lower()
+    print(input_string)
     isl_parsed_token_list = convert_eng_to_isl(input_string)
-
+    print("isl parsed token list: ",isl_parsed_token_list)
     # lemmatize tokens
     lemmatized_isl_token_list = lemmatize_tokens(isl_parsed_token_list)
+    print("LEMMATIZED WORDS",lemmatized_isl_token_list)
 
     # remove stop words
     filtered_isl_token_list = filter_stop_words(lemmatized_isl_token_list)
-
+    print("filtered isl token list",filtered_isl_token_list)
     isl_text_string = ""
 
     for token in filtered_isl_token_list:
@@ -140,5 +144,7 @@ def isl(text):
 
     isl_text_string = isl_text_string.lower()
 
-    return isl_text_string
+    print(isl_text_string)
 
+
+isl(text)

@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Speech to ISL</title>
     <style>
       body {
         margin: 40px auto;
@@ -17,12 +18,29 @@
       h2 {
         line-height: 1.2;
       }
+      #vid .col-sm-12{
+	position: relative;
+}
+#vid .col-sm-12 img{
+	width: 130%;
+}
+#vid .col-sm-12 video{
+  position: absolute;
+    right: 17%;
+    top: 26%;
+    max-width: 61%;
+}
     </style>
   </head>
 
   <body> 
-    <video id="videoPlayer" width="650" controls muted="muted" autoplay>
-      <source src="/video" type="video/mp4" />
-    </video> 
+    <div class="row" id="vid">
+      <div class="col-sm-12">
+        <img src="img/videoimg.jpg">
+        <video id="videoPlayer" width="650" controls muted="muted" autoplay>
+          <source src="/video" type="video/mp4" />
+        </video> 
+      </div>
+    </div>
   </body>
 </html>

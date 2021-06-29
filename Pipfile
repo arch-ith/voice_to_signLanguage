@@ -10,6 +10,8 @@ pytube = "*"
 selenium = "*"
 speechrecognition = "*"
 wget = "*"
+nltk = "*"
+pattern = "*"
 
 [dev-packages]
 

@@ -5,10 +5,13 @@ var bodyParser = require('body-parser');
 const app = express();
 const fs = require("fs"); 
 const port = 3000
-//ajax spaech recog file
+//ajax speech recog file
+app.use(express.static('public'));  
+app.use('/img', express.static('images')); 
 app.get("/", function (req, res) { 
   res.sendFile(path.join(__dirname+"/s2t.html")); 
 });  
+
 app.use(express.urlencoded());
 app.use(express.json());
 var inputLine;
@@ -71,6 +74,8 @@ app.get("/video", function (req, res) {
   
 })
 /*
+app.get('/img/bg4.jpg',(req,res))
+
 app.get('/', (req, res) => {
  
  

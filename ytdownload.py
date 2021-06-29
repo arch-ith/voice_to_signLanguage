@@ -12,8 +12,6 @@ os.chdir(SAMPLE_INPUTS)
 def downloader(word):
     word = list(word.split(" "))
     for w in word:
-        if w.endswith("ing"):
-            w=w[:-3]
         link=fetchLink.getLink(w)
         print("*****************************",link,"******************************")
         if link==0:

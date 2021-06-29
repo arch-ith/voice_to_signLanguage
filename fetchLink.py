@@ -10,7 +10,7 @@ def getLink(word):
     print("recives word is "+word+"\n")
     PATH =DRIVER_DIR  
     options = Options()
-    #options.add_argument('--headless')
+    options.add_argument('--headless')
     options.add_argument('--allow-running-insecure-content')
     options.add_argument('--ignore-ssl-errors')
     options.add_argument('--ignore-certificate-errors')
@@ -39,7 +39,7 @@ def getLink(word):
         print("Not found in talking hands") 
 
     driver.get("http://indiansignlanguage.org/"+word+"/") 
-    time.sleep(1.0)  
+    time.sleep(0.1)  
     try:
         value_xpath=driver.find_element_by_xpath("/html/body/div/div[2]/div/div/div[1]/main/article/div/div/div/iframe")
         link=value_xpath.get_attribute('src')
