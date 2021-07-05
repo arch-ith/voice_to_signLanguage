@@ -96,7 +96,11 @@ def convert_eng_to_isl(input_string):
 
     # Get most probable parse tree
     parse_tree = possible_parse_tree_list[0]
+<<<<<<< HEAD
     #print(parse_tree)
+=======
+    print(parse_tree)
+>>>>>>> 8e43ad3c63987396256069fbf73746d9afc7e284
 
     # Convert into tree data structure
     parent_tree = ParentedTree.convert(parse_tree)
@@ -126,6 +130,7 @@ def pre_process(sentence):
 
 def isl(text):
     input_string = text.capitalize()
+<<<<<<< HEAD
     #print(input_string)
     isl_parsed_token_list = convert_eng_to_isl(input_string)
     #print("isl parsed token list: ",isl_parsed_token_list)
@@ -136,6 +141,18 @@ def isl(text):
     # remove stop words
     filtered_isl_token_list = filter_stop_words(lemmatized_isl_token_list)
     #print("filtered isl token list",filtered_isl_token_list)
+=======
+    print(input_string)
+    isl_parsed_token_list = convert_eng_to_isl(input_string)
+    print("isl parsed token list: ",isl_parsed_token_list)
+    # lemmatize tokens
+    lemmatized_isl_token_list = lemmatize_tokens(isl_parsed_token_list)
+    print("LEMMATIZED WORDS",lemmatized_isl_token_list)
+
+    # remove stop words
+    filtered_isl_token_list = filter_stop_words(lemmatized_isl_token_list)
+    print("filtered isl token list",filtered_isl_token_list)
+>>>>>>> 8e43ad3c63987396256069fbf73746d9afc7e284
     isl_text_string = ""
 
     for token in filtered_isl_token_list:
@@ -144,7 +161,11 @@ def isl(text):
 
     isl_text_string = isl_text_string.lower()
 
+<<<<<<< HEAD
     #print(isl_text_string)
+=======
+    print(isl_text_string)
+>>>>>>> 8e43ad3c63987396256069fbf73746d9afc7e284
 
 
 isl(text)

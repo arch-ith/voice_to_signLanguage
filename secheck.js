@@ -67,6 +67,7 @@ app.get("/video", function (req, res) {
     })
   
 })
+<<<<<<< HEAD:secheck.js
 
 function pythonPromis(){new Promise((resolve, reject)=>{
       //creating video 
@@ -94,4 +95,16 @@ function pythonPromis(){new Promise((resolve, reject)=>{
       ////////////////////////////////////////////////////////////////////end of python
         })
   } 
+=======
+/*
+app.get('/img/bg4.jpg',(req,res))
+
+app.get('/', (req, res) => {
+ 
+ 
+ // send data to browser
+ res.send(dataToSend)
+ });
+ */
+>>>>>>> 8e43ad3c63987396256069fbf73746d9afc7e284:sever.js
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
