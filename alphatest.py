@@ -8,7 +8,7 @@ clips = [None]*len(word)
 for i,l in enumerate(word):
     filename= l+".mp4"
     filepath = os.path.join("alphabets", filename)
-    print(filepath)
+    #print(filepath)
     clip=  VideoFileClip(filepath)
     clips[i]=clip
 clip = concatenate_videoclips(clips,method='compose')

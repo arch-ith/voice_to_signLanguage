@@ -7,8 +7,6 @@ def generateclip(s):
     c=0
     dic = {}
     for w in s:
-        if w.endswith("ing"):
-            w=w[:-3]
         dic[c]=w
         c+=1
     clips = [None]*len(s)

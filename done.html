@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Speech to ISL</title>
     <style>
       body {
         margin: 40px auto;
@@ -17,202 +18,170 @@
       h2 {
         line-height: 1.2;
       }
-      body {
-                min-height: 100vh;
-                font-family: Roboto, Arial;
-                color: #ADAFB6;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: rgba(249, 251, 255,0.6);  
-                }
+      #vid .col-sm-12{
+	position: relative;
+}
+#vid .col-sm-12 img{
+	width: 130%;
+}
+#vid .col-sm-12 video{
+  position: absolute;
+    right: 17%;
+    top: 26%;
+    max-width: 61%;
+}
+body {
+  display: grid;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
 
-            .boxes {
-                height: 32px;
-                width: 32px;
-                position: relative;
-                -webkit-transform-style: preserve-3d;
-                transform-style: preserve-3d;
-                -webkit-transform-origin: 50% 50%;
-                transform-origin: 50% 50%;
-                margin-top: 32px;
-                -webkit-transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
-                transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
-            }
-            .boxes .box {
-                width: 32px;
-                height: 32px;
-                top: 0px;
-                left: 0;
-                position: absolute;
-                -webkit-transform-style: preserve-3d;
-                transform-style: preserve-3d;
-            }
+#container {
+  display: grid;
+  grid-template-columns: 50px 50px;
+  grid-template-rows: 50px 50px;
+  justify-content: center;
+  align-content: center;
 
+  background: white;
+  background-size: 1600% 1600%;
 
+  animation: moveBackground 9s linear infinite;
+}
 
-            .boxes .box:nth-child(1) {
-                -webkit-transform: translate(100%, 0);
-                transform: translate(100%, 0);
-                -webkit-animation: box1 1s linear infinite;
-                animation: box1 1s linear infinite;
-            }
-            .boxes .box:nth-child(2) {
-                -webkit-transform: translate(0, 100%);
-                transform: translate(0, 100%);
-                -webkit-animation: box2 1s linear infinite;
-                animation: box2 1s linear infinite;
-            }
-            .boxes .box:nth-child(3) {
-                -webkit-transform: translate(100%, 100%);
-                transform: translate(100%, 100%);
-                -webkit-animation: box3 1s linear infinite;
-                animation: box3 1s linear infinite;
-            }
-            .boxes .box:nth-child(4) {
-                -webkit-transform: translate(200%, 0);
-                transform: translate(200%, 0);
-                -webkit-animation: box4 1s linear infinite;
-                animation: box4 1s linear infinite;
-            }
+.cube {
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
 
+#cube1 {
+  background: #ffd5cd;
+  animation-name: moveCube1;
+}
+#cube2 {
+  background: #efbbcf;
+  animation-name: moveCube2;
+}
+#cube3 {
+  background: #c3aed6;
+  animation-name: moveCube3;
+}
+#cube4 {
+  background: #8675a9;
+  animation-name: moveCube4;
+  animation-delay: 0.1s;
+}
 
+/** Animation-Keyframes **/
 
-            .boxes .box > div {
-                background: #5C8DF6;
-                --translateZ: 15.5px;
-                --rotateY: 0deg;
-                --rotateX: 0deg;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background: #5C8DF6;
-                top: auto;
-                right: auto;
-                bottom: auto;
-                left: auto;
-                -webkit-transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
-                transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
-            }
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
 
-            .boxes .box > div:nth-child(1) {
-                top: 0;
-                left: 0;
-                background: #5C8DF6;
-            }
-            .boxes .box > div:nth-child(2) {
-                background: #145af2;
-                right: 0;
-                --rotateY: 90deg;
-            }
-            .boxes .box > div:nth-child(3) {
-                background: #447cf5;
-                --rotateX: -90deg;
-            }
-            .boxes .box > div:nth-child(4) {
-                background: #DBE3F4;
-                top: 0;
-                left: 0;
-                --translateZ: -90px;
-            }
+@keyframes moveCube1 {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  25% {
+    transform: translate(100%, 0%);
+  }
+  50% {
+    transform: translate(100%, 100%);
+  }
+  75% {
+    transform: translate(0%, 100%);
+  }
+}
 
+@keyframes moveCube2 {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  25% {
+    transform: translate(0%, 100%);
+  }
+  50% {
+    transform: translate(-100%, 100%);
+  }
+  75% {
+    transform: translate(-100%, 0%);
+  }
+}
 
+@keyframes moveCube3 {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  25% {
+    transform: translate(0%, -100%);
+  }
+  50% {
+    transform: translate(100%, -100%);
+  }
+  75% {
+    transform: translate(100%, 0%);
+  }
+}
 
+@keyframes moveCube4 {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  25% {
+    transform: translate(-100%, 0%);
+  }
+  50% {
+    transform: translate(-100%, -100%);
+  }
+  75% {
+    transform: translate(0%, -100%);
+  }
+}
 
-
-            @keyframes box1 {
-                0%,
-                50% {
-                    transform: translate(100%, 0);
-                }
-                100% {
-                    transform: translate(200%, 0);
-                }
-            }
-
-            @keyframes box2 {
-                0%{
-                    transform: translate(0, 100%);
-                }
-                50% {
-                    transform: translate(0, 0);
-                }
-                100% {
-                    transform: translate(100%, 0);
-                }
-            }
-
-            @keyframes box3 {
-                0%,
-                50% {
-                    transform: translate(100%, 100%);
-                }
-                100% {
-                    transform: translate(0, 100%);
-                }
-            }
-
-            @keyframes box4 {
-                0%{
-                    transform: translate(200%, 0);
-                }
-                50% {
-                    transform: translate(200%, 100%);
-                }
-                100% {
-                    transform: translate(100%, 100%);
-                }
-            }
-        </style>
     </style>
   </head>
-
-  <body> 
-      <div id="loader" >
-        <div class="boxes">
-            <div class="box">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="box">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="box">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="box">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-    </div>
-    <video id="videoPlayer" width="650" controls muted="muted" autoplay>
-      <source src="/video" type="video/mp4" />
-    </video> 
-    <script>
-      document.onreadystatechange = function() {
-          if (document.readyState !== "complete") {
-              document.querySelector(
-                "body").style.visibility = "hidden";
-              document.querySelector(
-                "#loader").style.visibility = "visible";
-          } else {
-              document.querySelector(
-                "#loader").style.display = "none";
-              document.querySelector(
-                "body").style.visibility = "visible";
-          }
-      };
+  <script>
+    document.onreadystatechange = function() {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+              "body").style.visibility = "hidden";
+            document.querySelector(
+              "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+              "#loader").style.display = "none";
+            document.querySelector(
+              "body").style.visibility = "visible";
+        }
+    };
   </script>
+  <body> 
+    <div class="row" id="vid">
+      <div class="col-sm-12">
+        <img src="img/videoimg.jpg">
+        <video id="videoPlayer" width="650" controls muted="muted" autoplay>
+          <source src="/video" type="video/mp4" />
+        </video> 
+      </div>
+    </div>
+    <div id="loader">
+      <div id="container">
+        <div class="cube" id="cube1"></div>
+        <div class="cube" id="cube2"></div>
+        <div class="cube" id="cube3"></div>
+        <div class="cube" id="cube4"></div>
+        <br><br> 
+      </div>
+    </div>
   </body>
 </html>

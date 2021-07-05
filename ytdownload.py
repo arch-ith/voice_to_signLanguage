@@ -12,16 +12,14 @@ os.chdir(SAMPLE_INPUTS)
 def downloader(word):
     word = list(word.split(" "))
     for w in word:
-        if w.endswith("ing"):
-            w=w[:-3]
         link=fetchLink.getLink(w)
-        print("*****************************",link,"******************************")
+        #print("*****************************",link,"******************************")
         if link==0:
             clips = [None]*len(w)
             for i,l in enumerate(w):
                 filename= l+".mp4"
                 filepath = os.path.join("alphabets", filename)
-                print(filepath)
+                #print(filepath)
                 clip=  VideoFileClip(filepath)
                 clips[i]=clip
             clip = concatenate_videoclips(clips,method='compose')

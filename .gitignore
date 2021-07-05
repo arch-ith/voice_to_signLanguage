@@ -4,3 +4,4 @@ __pycache__/
 trim.py
 sizetest.py
 map.py
+.vscode/ 

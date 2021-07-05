@@ -1,16 +1,16 @@
 import speech_recognition as sr
-import ytdownload,test01
+import ytdownload,test01,speech_to_isl
 import sys
 """"
 ytdownload.downloader("call accross")
 test01.generateclip("call accross")
 
+s=speech_to_isl.isl(sys.argv[1])
+
+s=speech_to_isl.isl("I am reading a story")
 """
-ytdownload.downloader("he attack")
-test01.generateclip("he attack")
-
-""" 
-ytdownload.downloader(format(sys.argv[1]))
-test01.generateclip(format(sys.argv[1]))
-""" 
-
+s=speech_to_isl.isl(sys.argv[1])
+s=s.strip()
+ytdownload.downloader(s)
+test01.generateclip(s)
+print("done!")

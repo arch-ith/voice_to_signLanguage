@@ -1,117 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <title>ISL Conversion</title> 
-    <style>
-       * {
-  	font-family: Montserrat, sans-serif;
-}
-h1 {
-  	margin: 0;
-	width: 150px;
-	height: 30px;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 24px;
-	line-height: 30px;
-	color: #111F4D;
-	text-align: center;
-	animation: t-stretch 1.5s linear 0.5s infinite forwards;
-}
-@keyframes t-stretch {
-	0% {
-		letter-spacing: 0px;
-	}
-	10% {
-		letter-spacing: 2px;
-	}
-	25% {
-		letter-spacing: 4px;
-	}
-	50% {
-		letter-spacing: 2px;
-	}
-	75% {
-		letter-spacing: 4px;
-	}
-	90% {
-		letter-spacing: 3px;
-	}
-	100% {
-		letter-spacing: 0px;
-	}
-}
-div {
-	width: 150px;
-	height: 210px;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	margin-top: -105px;
-	margin-left: -60px;
-}
-svg {
-	margin-left: 30px;
-	width: 90px;
-	height: 180px;
-}
-.t {
-	transform-origin: 50% 50%;
-	transform-style: preserve-3d;
-}
-#s1 {
-	animation-delay: -4s;
-}
-#s2 {
-	animation-delay: -3.5s;
-}
-#s3 {
-	animation-delay: -3s;
-}
-#s4 {
-	animation-delay: -2.5s;
-}
-#s5 {
-	animation-delay: -2s;
-}
-#s6 {
-	animation-delay: -1.5s;
-}
-#s7 {
-	animation-delay: -1s;
-}
-#s8 {
-	animation-delay: -0.5s;
-}
-.sMove {
-	animation: s-turn 8s linear infinite forwards;
-}
-@keyframes s-turn {
-	0% {}
-	50% {
-		transform: rotateX(1turn); 
-	}
-	100% { 
-        color: #1f183d;
-    }
-    
-}
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to ISL</title>
 </head>
+<style>
+    body {
+    min-height: 100vh;
+    font-family: Roboto, Arial;
+    color: #ADAFB6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(249, 251, 255,0.6);  
+    }
+
+.boxes {
+    height: 32px;
+    width: 32px;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    margin-top: 32px;
+    -webkit-transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+    transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+    display: flex;
+    justify-content: center;
+}
+.boxes .box {
+    width: 32px;
+    height: 32px;
+    top: 0px;
+    left: 0;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+
+
+.boxes .box:nth-child(1) {
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+    -webkit-animation: box1 1s linear infinite;
+    animation: box1 1s linear infinite;
+}
+.boxes .box:nth-child(2) {
+    -webkit-transform: translate(0, 100%);
+    transform: translate(0, 100%);
+    -webkit-animation: box2 1s linear infinite;
+    animation: box2 1s linear infinite;
+}
+.boxes .box:nth-child(3) {
+    -webkit-transform: translate(100%, 100%);
+    transform: translate(100%, 100%);
+    -webkit-animation: box3 1s linear infinite;
+    animation: box3 1s linear infinite;
+}
+.boxes .box:nth-child(4) {
+    -webkit-transform: translate(200%, 0);
+    transform: translate(200%, 0);
+    -webkit-animation: box4 1s linear infinite;
+    animation: box4 1s linear infinite;
+}
+
+
+
+.boxes .box > div {
+    background: #5C8DF6;
+    --translateZ: 15.5px;
+    --rotateY: 0deg;
+    --rotateX: 0deg;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #5C8DF6;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    -webkit-transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
+    transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
+}
+
+.boxes .box > div:nth-child(1) {
+    top: 0;
+    left: 0;
+    background: #5C8DF6;
+}
+.boxes .box > div:nth-child(2) {
+    background: #145af2;
+    right: 0;
+    --rotateY: 90deg;
+}
+.boxes .box > div:nth-child(3) {
+    background: #447cf5;
+    --rotateX: -90deg;
+}
+.boxes .box > div:nth-child(4) {
+    background: #DBE3F4;
+    top: 0;
+    left: 0;
+    --translateZ: -90px;
+}
+
+
+
+
+
+@keyframes box1 {
+    0%,
+    50% {
+        transform: translate(100%, 0);
+    }
+    100% {
+        transform: translate(200%, 0);
+    }
+}
+
+@keyframes box2 {
+    0%{
+        transform: translate(0, 100%);
+    }
+    50% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(100%, 0);
+    }
+}
+
+@keyframes box3 {
+    0%,
+    50% {
+        transform: translate(100%, 100%);
+    }
+    100% {
+        transform: translate(0, 100%);
+    }
+}
+
+@keyframes box4 {
+    0%{
+        transform: translate(200%, 0);
+    }
+    50% {
+        transform: translate(200%, 100%);
+    }
+    100% {
+        transform: translate(100%, 100%);
+    }
+}
+</style>
 <body>
-    <div>
-        <svg>
-            <circle id="s8" class="sMove t" cx="45" cy="50" r="45" fill="#1f183d"/>
-            <polygon id="s7" class="sMove t" points="45,05 16,16 1,42 6,73 30,92 60,92 84,73 89,42 74,16" fill="#101a3d"/>
-            <polygon id="s6" class="sMove t" points="45,04 12,17 0,50 12,83 45,96 78,83 90,50 78,17" fill="#0c1046"/>
-            <polygon id="s5" class="sMove t" points="45,04 9,22 1,60 25,92 65,92 89,60 81,22" fill="#0f0e63"/>
-            <polygon id="s4" class="sMove t" points="45,03 4,26 4,74 45,97 86,74 86,26" fill="#0e2963"/>
-            <polygon id="s3" class="sMove t" points="45,03 1,35 18,88 72,88 89,35" fill="#137399"/>
-            <rect id="s2" class="sMove t" x="10" y="15" width="70" height="70" fill="#169cbd"/>
-            <polygon id="s1" class="sMove t" points="45,05 2,80 88,80" fill="#19e4e4"/>
-        </svg>
-        <h1>Loading...</h1>
-    </div>
+    <div class="boxes">
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div> 
 </body>
 </html>

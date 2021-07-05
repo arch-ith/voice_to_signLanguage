@@ -19,4 +19,4 @@ for key, value in dic.items():
             clip = VideoFileClip(file)
             clips[key]=clip
             break
-print(clips)
+#print(clips)
