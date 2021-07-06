@@ -1,3 +1,25 @@
+## Usage
+
+Install dependencies
+
+```
+npm install
+```
+```
+pip install pipenv
+```
+```
+pip install pipenv
+```
+```
+pipenv install
+```
+```
+pipenv shell
+```
+```
+nodemon server.js
+```
 # voice_to_signLanguage
 Voice to Sign Language Conversion
 <!--lint disable no-literal-urls-->
