@@ -14,28 +14,33 @@ app.set('view engine', 'ejs');
 const port = 3000
 let inputLine = ""
 let done = false
-
+let dataString = ""
+let requiredData = ""
 //static images file
 app.use(express.static('public'));
 app.use('/img', express.static('images'));
 
-//loading screen middleware
-//app.use(loadingScreenMiddleWare)
-//start the python promise
-//app.use(pythonPromisMiddleWare)
 //Home page s2t.html
 app.get("/", function (req, res) {
+  inputLine = ""
   done = false
+  dataString = ""
+  requiredData = ""
   res.sendFile(path.join(__dirname + "/s2t.html"));
 });
 //Final speach file done.html
 app.post("/speach", function (req, res) {
   inputLine = req.body.textbox;
   //res.sendFile(path.join(__dirname+"/done.html"));
-  res.render('result', { done: done })
-  isItDoneYet().then((msg) => { 
+  res.render('result', { done: done, islSyntax: requiredData, normalSyntax: inputLine })
+  isItDoneYet().then((msg) => {
     console.log(msg)
     console.log(inputLine)
+
+    console.log("data->" + dataString)
+    let startIndex = dataString.indexOf("ISL:{")
+    let endIndex = dataString.indexOf("}")
+    requiredData = dataString.substring(startIndex + 5, endIndex);
     //res.sendFile(path.join(__dirname + "/done.html"))
     done = true;
   }).catch((msg) => {
@@ -43,9 +48,9 @@ app.post("/speach", function (req, res) {
   })
 });
 app.get("/loading", (req, res) => {
-  res.render('result', { done: done })
+  res.render('result', { done: done, islSyntax: requiredData, normalSyntax: inputLine })
 })
-//done request video
+//done request video 
 app.get("/video", function (req, res) {
   const range = req.headers.range;
   if (!range) {
@@ -75,16 +80,19 @@ app.get("/video", function (req, res) {
   res.writeHead(206, headers);
 
   // create video read stream for this particular chunk
-  const videoStream = fs.createReadStream(videoPath, { start, end });
+  var videoStream = fs.createReadStream(videoPath, { start, end });
 
   // Stream the video chunk to the client
-  videoStream.pipe(res);
-}
-)
+  videoStream.pipe(res); 
+})
+
 //this the python promise 
 const isItDoneYet = () => new Promise((resolve, reject) => {
   const python = spawn('python', ['speech_recog.py', inputLine])
   let c = false
+  python.stdout.on('data', function (data) {
+    dataString += data.toString();
+  })
   python.on('exit', (code) => {
     console.log(`child process close all stdio with code ${code}`);
     if (code == 0)

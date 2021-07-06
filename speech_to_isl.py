@@ -139,6 +139,6 @@ def isl(text):
         isl_text_string += " "
 
     isl_text_string = isl_text_string.lower()
-
+    print("ISL:{"+isl_text_string+"}")
     return isl_text_string
 
