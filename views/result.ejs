@@ -8,12 +8,13 @@
   <style>
     body {
       margin: 40px auto;
-      max-width: 650px;
+      max-width :fit-content;
       line-height: 1.6;
       font-size: 18px;
       font-family: "Courier New", Courier, monospace;
       color: #444;
       padding: 0 10px;
+      overflow: hidden;
     }
 
     h2 {
@@ -202,31 +203,52 @@
       bottom: 35%;
       left: 43%;
     }
-    #textLoader2{
+
+    #textLoader2 {
       position: absolute;
       bottom: 25%;
-      left: 43%;      
+      left: 43%;
     }
 
     #textHome {
-      position: absolute;
+      z-index: 1000;
+      position: fixed;
       top: 5%;
       right: 5%;
     }
+
+    #homeButton {
+
+      border-radius: 50%;
+      padding: 30px;
+      font-family: monospace;
+      font-size: 20px;
+      font-weight: 300;
+    }
+    #dispFlex2 {
+    margin-top: 10%;
+    width: 100%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
   </style>
 </head>
 
 <body>
   <% if (done) { %>
-    <div class="row" id="vid">
-      <div class="col-sm-12">
-        <img src="img/videoimg.jpg">
-        <video id="videoPlayer" width="650" controls muted="muted" autoplay>
-          <source src="/video" type="video/mp4" />
-        </video>
+    <p id="textHome"><a href="/"><button id="homeButton" class="btn btn-accept"> Home </button></a></p>
+    <div id="dispFlex2">
+      <div id="syntaxChange">The Original syntax is : <%= normalSyntax%><br>The ISL syntax is : <%=islSyntax %>
+      </div> 
+      <div class="row" id="vid">
+        <div class="col-sm-12">
+          <img src="img/videoimg.jpg" width="500">
+          <video id="videoPlayer" width="650" controls muted="muted" autoplay>
+            <source src="/video" type="video/mp4" />
+          </video>
+        </div>
       </div>
-      <div id="syntaxChange">The Original syntax is : <%= normalSyntax%><br>The ISL syntax is : <%=islSyntax %> </div>
-      <p id="textHome"> <button class="btn btn-accept"> <a href="/">Home </a></button></p>
+
     </div>
     <%} else { %>
       <div id="loader">
