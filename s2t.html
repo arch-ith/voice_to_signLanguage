@@ -11,13 +11,29 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         .container{
 	padding: 50px 0;
     display: flex;
-}
+    }
+    form .form{
+        display: flex;
+    }
+    .mic-btn{
+        position: relative;
+        /* padding: 0 190px; */
+        margin-top: 15px;
+    }
+    .mic-btn i{
+        color: #fff;
+        position: absolute;
+        top: 30px;
+        font-size: 50px;
+        right: 55px;
+    }
     #mic .col-sm-6:nth-child(2){
-        padding-top: 85px;
+        /* padding-top: 85px; */
         text-align: center;
     }
     #mic .col-sm-6 img{
@@ -30,7 +46,7 @@
         height: 110px;
         width: 110px;
         border-radius: 80px;
-        margin: 20px 25px;
+        margin: 0px 25px;
         font-size: 20px;
         font-family: 'Bree Serif';
     }
@@ -42,17 +58,36 @@
         font-size: 55px;
     }
     #button-set{
-        display: inline-flex;
+        display: flex;
+        margin-top: 20px;
     }
     #start-btn{
         background-color: #08419e;
     }
+    /* #start-btn:hover{
+        background-color: transparent;
+        color: #000;
+        border: solid 5px #08419e;
+    } */
+    /* .mic-btn:hover{
+        color: #000;
+    } */
     #cancel-btn{
         background-color: #9e087d;
     }
+    /* #cancel-btn:hover{
+        background-color: transparent;
+        color: #000;
+        border: solid 5px #9e087d;
+    } */
     #generate-btn{
         background-color: #64089e;
     }
+    /* #generate-btn:hover{
+        background-color: transparent;
+        color: #000;
+        border: solid 5px #64089e;
+    } */
     #textbox{
         font-family: 'Bree serif';
     }
@@ -70,11 +105,22 @@
                     <h1 class="text-center mt-5">Speech-to-Indian Sign Language</h1>
                     <div class="form group mt-3">
                         <textarea type="" id="textbox" name="textbox" class="form-control" rows="2"></textarea>
+                        <div class="mic-btn">
+                            <i class="material-icons">mic</i>
+                            <input type="button" id="start-btn" class="btn btn-dark btn-block">
+                            <!-- <i class="material-icons">mic</i> -->
+                        </div> 
                     </div>
-                    <div class="form group mt-1" id="button-set">
-                        <input type="button" id="start-btn" class="btn btn-dark btn-block" value="Start">
-                        <input type="button" id="cancel-btn" class="btn btn-secondary btn-block" value="Cancel">
+                    <!-- mic was here -->
+                    <div class="form group" id="button-set">
+                        <!-- <div class="mic-btn">
+                            <i class="material-icons">mic</i>
+                            <input type="button" id="start-btn" class="btn btn-dark btn-block">
+                            
+                        </div>                         -->
                         <button id="generate-btn" class="btn btn-dark btn-block">Generate</button>
+                        <input type="button" id="cancel-btn" class="btn btn-secondary btn-block" value="Cancel">
+                        
                     </div>
                 </form>
             </div>

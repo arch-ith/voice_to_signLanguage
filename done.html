@@ -5,36 +5,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Speech to ISL</title>
-    <style>
-      body {
-        margin: 40px auto;
-        max-width: 650px;
-        line-height: 1.6;
-        font-size: 18px;
-        font-family: "Courier New", Courier, monospace;
-        color: #444;
-        padding: 0 10px;
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+	  <link rel="preconnect" href="https://fonts.gstatic.com">
+	  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	  <style>
+      html{
+        /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(public/img/videoimg3.jpeg); */
+        background-image: url(public/img/videoimg3.jpeg);
+	      background-repeat: no-repeat;
+	      background-size: cover;
+        background-position-x: 373px;
+        background-position-y: -65px;
+        background-color: #3e9195;
       }
+	    body {
+	      margin: 40px auto;
+	      /* max-width: 650px; */
+	      line-height: 1.6;
+	      font-size: 18px;
+	      font-family: 'Bree Serif';
+	      color: #444;
+	      padding: 0 10px;
+        background-color: transparent;
+	      /* background-image: url('public/img/videoimg3'); */
+	      /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(public/img/videoimg3);
+	      background-repeat: no-repeat;
+	      background-size: cover; */
+	      /* height: 200vh; */
+	      /* background-position-x: 373px;
+        background-color: #59a1a3; */
+	    }
+      /* .container{
+        padding-bottom: 30px;
+      } */
       h2 {
         line-height: 1.2;
       }
       #vid .col-sm-12{
 	position: relative;
 }
+.btn{
+  /* height: 110px; */
+  /* width: 110px; */
+  /* border-radius: 80px; */
+  /* margin: 0px 25px; */
+  font-size: 30px;
+  font-family: 'Bree Serif';
+  margin-top: 165px;
+  border: solid;
+  color: honeydew;
+  /* background-color: pink; */
+  /* padding: 25px 0; */
+}
+#dispFlex2{
+  text-align: center;
+  display: flex;
+  /* padding-bottom: 50px; */
+}
 #vid .col-sm-12 img{
-	width: 130%;
+	width: 925px;
+  /* margin-left: -10%; */
 }
 #vid .col-sm-12 video{
   position: absolute;
-    right: 17%;
-    top: 26%;
+    /* right: 17%; */
+    left: 23%;
+    top: 25%;
     max-width: 61%;
 }
+#syntaxChange{
+  text-align: center;
+}
+#syntaxChange p{
+  color: honeydew;
+  font-size: 30px;
+}
 body {
-  display: grid;
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
+  /* display: grid; */
+  /* margin: 0; */
+  /* height: 100vh; */
+  /* width: 100vw; */
 }
 
 #container {
@@ -167,13 +218,25 @@ body {
   </script>
   <body> 
     <div class="row" id="vid">
-      <div class="col-sm-12">
-        <img src="img/videoimg.jpg">
-        <video id="videoPlayer" width="650" controls muted="muted" autoplay>
-          <source src="/video" type="video/mp4" />
-        </video> 
+      <div class="container">
+        <!-- <a href="/" class="btn"><i class="material-icons">arrow_back</i>Go Back</a> -->
+        <div id="syntaxChange">
+          <p>The Original syntax is : <%= normalSyntax%><br>The ISL syntax is : <%=islSyntax %></p>
+        </div>
+        <div class="col-sm-12">
+          <div id="dispFlex2">
+            <!-- <div id="syntaxChange">
+              <p>The Original syntax is : <%= normalSyntax%><br>The ISL syntax is : <%=islSyntax %></p>
+            </div> -->
+            <!-- <img src="public/img/videoimg.jpg"> -->
+            <a href="/" class="btn"><i class="material-icons">arrow_back</i>&nbsp;Go Back</a>
+            <video id="videoPlayer" width="700" height="350" controls muted="muted" autoplay>
+              <source src="/video" type="video/mp4" />
+            </video> 
+          </div>
+        </div>
       </div>
-    </div>
+      
     <div id="loader">
       <div id="container">
         <div class="cube" id="cube1"></div>

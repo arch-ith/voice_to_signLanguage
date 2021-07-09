@@ -9,7 +9,7 @@ from conf import JAR_DIR
 
 os.environ['STANFORD_PARSER'] = JAR_DIR
 os.environ['STANFORD_MODELS'] = JAR_DIR
-os.environ['JAVAHOME'] = "C:/Program Files/Java/jdk-14.0.2/bin/java.exe"
+os.environ['JAVAHOME'] = "C:/Program Files/Java/jdk-16.0.1/bin/java.exe"
 nltk.download('wordnet')
 
 def filter_stop_words(words):
