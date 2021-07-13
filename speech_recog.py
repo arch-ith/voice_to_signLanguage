@@ -9,7 +9,7 @@ s=speech_to_isl.isl(sys.argv[1])
 
 s=speech_to_isl.isl("I am reading a story")
 """
-s=speech_to_isl.isl("my house is in assam")
+s=speech_to_isl.isl(sys.argv[1])
 s=s.strip()
 ytdownload.downloader(s)
 test01.generateclip(s)
