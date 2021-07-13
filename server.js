@@ -16,6 +16,7 @@ let inputLine = ""
 let done = false
 let dataString = ""
 let requiredData = ""
+var python = null
 //static images file
 app.use(express.static('public'));
 app.use('/img', express.static('images'));
@@ -26,30 +27,37 @@ app.get("/", function (req, res) {
   done = false
   dataString = ""
   requiredData = ""
+  if (python != null)
+    python.kill('SIGINT');
   res.sendFile(path.join(__dirname + "/s2t.html"));
 });
 //Final speach file done.html
 app.post("/speach", function (req, res) {
   inputLine = req.body.textbox;
   //res.sendFile(path.join(__dirname+"/done.html"));
-  res.render('result', { done: done, islSyntax: requiredData, normalSyntax: inputLine })
-  isItDoneYet().then((msg) => {
-    console.log(msg)
-    console.log(inputLine)
+  //res.render('result', { done: done, islSyntax: requiredData, normalSyntax: inputLine })
 
-    console.log("data->" + dataString)
-    let startIndex = dataString.indexOf("ISL:{")
-    let endIndex = dataString.indexOf("}")
-    requiredData = dataString.substring(startIndex + 5, endIndex);
-    //res.sendFile(path.join(__dirname + "/done.html"))
-    done = true;
-  }).catch((msg) => {
-    console.log(msg);
-  })
+  if (done == false) {
+    isItDoneYet().then((msg) => {
+      console.log(msg)
+      console.log(inputLine)
+      if (done)
+        res.render('result', { done: done, islSyntax: requiredData, normalSyntax: inputLine })
+      console.log("data->\n" + dataString)
+      let startIndex = dataString.indexOf("ISL:{")
+      let endIndex = dataString.indexOf("}")
+      requiredData = dataString.substring(startIndex + 5, endIndex);
+      res.render('result', { done: done, islSyntax: requiredData, normalSyntax: inputLine })
+      //res.sendFile(path.join(__dirname + "/done.html"))
+      done = true;
+    }).catch((msg) => {
+      console.log(msg);
+    })
+  }
+  else{ 
+    res.render('result', { done: done, islSyntax: requiredData, normalSyntax: inputLine })
+  }
 });
-app.get("/loading", (req, res) => {
-  res.render('result', { done: done, islSyntax: requiredData, normalSyntax: inputLine })
-})
 //done request video 
 app.get("/video", function (req, res) {
   const range = req.headers.range;
@@ -76,19 +84,20 @@ app.get("/video", function (req, res) {
     "Content-Type": "video/mp4",
   };
 
-  // HTTP Status 206 for Partial Content
-  res.writeHead(206, headers);
-
   // create video read stream for this particular chunk
   var videoStream = fs.createReadStream(videoPath, { start, end });
 
+  // HTTP Status 206 for Partial Content
+  res.writeHead(206, headers);
+
+
   // Stream the video chunk to the client
-  videoStream.pipe(res); 
+  videoStream.pipe(res);
 })
 
 //this the python promise 
 const isItDoneYet = () => new Promise((resolve, reject) => {
-  const python = spawn('python', ['speech_recog.py', inputLine])
+  python = spawn('python', ['speech_recog.py', inputLine])
   let c = false
   python.stdout.on('data', function (data) {
     dataString += data.toString();

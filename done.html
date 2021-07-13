@@ -12,7 +12,7 @@
 	  <style>
       html{
         /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(public/img/videoimg3.jpeg); */
-        background-image: url(public/img/videoimg3.jpeg);
+        background-image: url("public/img/videoimg3.jpeg");
 	      background-repeat: no-repeat;
 	      background-size: cover;
         background-position-x: 373px;
@@ -81,142 +81,18 @@
   color: honeydew;
   font-size: 30px;
 }
+/*
 body {
-  /* display: grid; */
-  /* margin: 0; */
-  /* height: 100vh; */
-  /* width: 100vw; */
-}
-
-#container {
   display: grid;
-  grid-template-columns: 50px 50px;
-  grid-template-rows: 50px 50px;
-  justify-content: center;
-  align-content: center;
+   margin: 0;
+   height: 100vh;
+   width: 100vw;
+} */
 
-  background: white;
-  background-size: 1600% 1600%;
-
-  animation: moveBackground 9s linear infinite;
-}
-
-.cube {
-  animation-duration: 6s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease;
-}
-
-#cube1 {
-  background: #ffd5cd;
-  animation-name: moveCube1;
-}
-#cube2 {
-  background: #efbbcf;
-  animation-name: moveCube2;
-}
-#cube3 {
-  background: #c3aed6;
-  animation-name: moveCube3;
-}
-#cube4 {
-  background: #8675a9;
-  animation-name: moveCube4;
-  animation-delay: 0.1s;
-}
-
-/** Animation-Keyframes **/
-
-@keyframes moveBackground {
-  0% {
-    background-position: 0% 100%;
-  }
-  50% {
-    background-position: 100% 0%;
-  }
-  100% {
-    background-position: 0% 100%;
-  }
-}
-
-@keyframes moveCube1 {
-  0% {
-    transform: translate(0%, 0%);
-  }
-  25% {
-    transform: translate(100%, 0%);
-  }
-  50% {
-    transform: translate(100%, 100%);
-  }
-  75% {
-    transform: translate(0%, 100%);
-  }
-}
-
-@keyframes moveCube2 {
-  0% {
-    transform: translate(0%, 0%);
-  }
-  25% {
-    transform: translate(0%, 100%);
-  }
-  50% {
-    transform: translate(-100%, 100%);
-  }
-  75% {
-    transform: translate(-100%, 0%);
-  }
-}
-
-@keyframes moveCube3 {
-  0% {
-    transform: translate(0%, 0%);
-  }
-  25% {
-    transform: translate(0%, -100%);
-  }
-  50% {
-    transform: translate(100%, -100%);
-  }
-  75% {
-    transform: translate(100%, 0%);
-  }
-}
-
-@keyframes moveCube4 {
-  0% {
-    transform: translate(0%, 0%);
-  }
-  25% {
-    transform: translate(-100%, 0%);
-  }
-  50% {
-    transform: translate(-100%, -100%);
-  }
-  75% {
-    transform: translate(0%, -100%);
-  }
-}
 
     </style>
   </head>
-  <script>
-    document.onreadystatechange = function() {
-        if (document.readyState !== "complete") {
-            document.querySelector(
-              "body").style.visibility = "hidden";
-            document.querySelector(
-              "#loader").style.visibility = "visible";
-        } else {
-            document.querySelector(
-              "#loader").style.display = "none";
-            document.querySelector(
-              "body").style.visibility = "visible";
-        }
-    };
-  </script>
-  <body> 
+  <body>
     <div class="row" id="vid">
       <div class="container">
         <!-- <a href="/" class="btn"><i class="material-icons">arrow_back</i>Go Back</a> -->
@@ -232,19 +108,10 @@ body {
             <a href="/" class="btn"><i class="material-icons">arrow_back</i>&nbsp;Go Back</a>
             <video id="videoPlayer" width="700" height="350" controls muted="muted" autoplay>
               <source src="/video" type="video/mp4" />
-            </video> 
+            </video>
           </div>
         </div>
       </div>
-      
-    <div id="loader">
-      <div id="container">
-        <div class="cube" id="cube1"></div>
-        <div class="cube" id="cube2"></div>
-        <div class="cube" id="cube3"></div>
-        <div class="cube" id="cube4"></div>
-        <br><br> 
-      </div>
-    </div>
+
   </body>
 </html>

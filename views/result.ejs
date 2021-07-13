@@ -1,268 +1,118 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speech to ISL</title>
-  <style>
-    body {
-      margin: 40px auto;
-      max-width :fit-content;
-      line-height: 1.6;
-      font-size: 18px;
-      font-family: "Courier New", Courier, monospace;
-      color: #444;
-      padding: 0 10px;
-      overflow: hidden;
-    }
-
-    h2 {
-      line-height: 1.2;
-    }
-
-    #vid .col-sm-12 {
-      position: relative;
-    }
-
-    #vid .col-sm-12 img {
-      width: 130%;
-    }
-
-    #vid .col-sm-12 video {
-      position: absolute;
-      right: 17%;
-      top: 26%;
-      max-width: 61%;
-    }
-
-    #loader {
-      display: flex;
-      justify-content: center;
-      position: absolute;
-      top: 40%;
-      left: 45%;
-    }
-
-    #container {
-      display: grid;
-      grid-template-columns: 50px 50px;
-      grid-template-rows: 50px 50px;
-      justify-content: center;
-      align-content: center;
-
-      background: white;
-      background-size: 1600% 1600%;
-
-      animation: moveBackground 9s linear infinite;
-    }
-
-    .cube {
-      animation-duration: 6s;
-      animation-iteration-count: infinite;
-      animation-timing-function: ease;
-    }
-
-    #cube1 {
-      background: #ffd5cd;
-      animation-name: moveCube1;
-    }
-
-    #cube2 {
-      background: #efbbcf;
-      animation-name: moveCube2;
-    }
-
-    #cube3 {
-      background: #c3aed6;
-      animation-name: moveCube3;
-    }
-
-    #cube4 {
-      background: #8675a9;
-      animation-name: moveCube4;
-      animation-delay: 0.1s;
-    }
-
-    /** Animation-Keyframes **/
-
-    @keyframes moveBackground {
-      0% {
-        background-position: 0% 100%;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speech to ISL</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+	  <link rel="preconnect" href="https://fonts.gstatic.com">
+	  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	  <style>
+      html{
+        /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(public/img/videoimg3.jpeg); */
+        background-image: url("public/img/videoimg3.jpeg");
+	      background-repeat: no-repeat;
+	      background-size: cover;
+        background-position-x: 373px;
+        background-position-y: -65px;
+        background-color: #3e9195;
       }
-
-      50% {
-        background-position: 100% 0%;
+	    body {
+	      margin: 40px auto;
+        overflow-x: hidden;
+	      /* max-width: 650px; */
+	      line-height: 1.6;
+	      font-size: 18px;
+	      font-family: 'Bree Serif';
+	      color: #444;
+	      padding: 0 10px;
+        background-color: transparent;
+	      /* background-image: url('public/img/videoimg3'); */
+	      /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(public/img/videoimg3);
+	      background-repeat: no-repeat;
+	      background-size: cover; */
+	      /* height: 200vh; */
+	      /* background-position-x: 373px;
+        background-color: #59a1a3; */
+	    }
+      /* .container{
+        padding-bottom: 30px;
+      } */
+      h2 {
+        line-height: 1.2;
       }
-
-      100% {
-        background-position: 0% 100%;
-      }
-    }
-
-    @keyframes moveCube1 {
-      0% {
-        transform: translate(0%, 0%);
-      }
-
-      25% {
-        transform: translate(100%, 0%);
-      }
-
-      50% {
-        transform: translate(100%, 100%);
-      }
-
-      75% {
-        transform: translate(0%, 100%);
-      }
-    }
-
-    @keyframes moveCube2 {
-      0% {
-        transform: translate(0%, 0%);
-      }
-
-      25% {
-        transform: translate(0%, 100%);
-      }
-
-      50% {
-        transform: translate(-100%, 100%);
-      }
-
-      75% {
-        transform: translate(-100%, 0%);
-      }
-    }
-
-    @keyframes moveCube3 {
-      0% {
-        transform: translate(0%, 0%);
-      }
-
-      25% {
-        transform: translate(0%, -100%);
-      }
-
-      50% {
-        transform: translate(100%, -100%);
-      }
-
-      75% {
-        transform: translate(100%, 0%);
-      }
-    }
-
-    @keyframes moveCube4 {
-      0% {
-        transform: translate(0%, 0%);
-      }
-
-      25% {
-        transform: translate(-100%, 0%);
-      }
-
-      50% {
-        transform: translate(-100%, -100%);
-      }
-
-      75% {
-        transform: translate(0%, -100%);
-      }
-    }
-
-    .btn {
-      border: none;
-      border-radius: 40px;
-      color: #fff;
-      cursor: pointer;
-      font-weight: 700;
-      margin: 0 10px;
-      padding: 10px 10px;
-      -webkit-transition: all 0.6s cubic-bezier(0.165, 0.80, 0.40, 1);
-      transition: all 0.6s cubic-bezier(0.165, 0.80, 0.40, 1);
-    }
-
-    .btn-accept {
-      background-color: rgb(247, 59, 247);
-    }
-
-    .btn-accept:hover {
-      background-color: #ff9add;
-    }
-
-    a {
-      text-decoration: none;
-      font-weight: 300;
-      color: #fff;
-    }
-
-    #textLoader {
-      position: absolute;
-      bottom: 35%;
-      left: 43%;
-    }
-
-    #textLoader2 {
-      position: absolute;
-      bottom: 25%;
-      left: 43%;
-    }
-
-    #textHome {
-      z-index: 1000;
-      position: fixed;
-      top: 5%;
-      right: 5%;
-    }
-
-    #homeButton {
-
-      border-radius: 50%;
-      padding: 30px;
-      font-family: monospace;
-      font-size: 20px;
-      font-weight: 300;
-    }
-    #dispFlex2 {
-    margin-top: 10%;
-    width: 100%;
-  display: grid;
-  grid-template-columns: 30% 70%;
+      #vid .col-sm-12{
+	position: relative;
 }
-  </style>
-</head>
+.btn{
+  /* height: 110px; */
+  /* width: 110px; */
+  /* border-radius: 80px; */
+  /* margin: 0px 25px; */
+  font-size: 30px;
+  font-family: 'Bree Serif';
+  margin-top: 165px;
+  border: solid;
+  color: honeydew;
+  /* background-color: pink; */
+  /* padding: 25px 0; */
+}
+#dispFlex2{
+  text-align: center;
+  display: flex;
+  /* padding-bottom: 50px; */
+}
+#vid .col-sm-12 img{
+	width: 925px;
+  /* margin-left: -10%; */
+}
+#vid .col-sm-12 video{
+  position: absolute;
+    /* right: 17%; */
+    left: 23%;
+    top: 25%;
+    max-width: 61%;
+}
+#syntaxChange{
+  text-align: center;
+}
+#syntaxChange p{
+  color: honeydew;
+  font-size: 30px;
+}
+/* 
+body {
+  display: grid;  
+   margin: 0; 
+   height: 100vh; 
+   width: 100vw; 
+} */
 
-<body>
-  <% if (done) { %>
-    <p id="textHome"><a href="/"><button id="homeButton" class="btn btn-accept"> Home </button></a></p>
-    <div id="dispFlex2">
-      <div id="syntaxChange">The Original syntax is : <%= normalSyntax%><br>The ISL syntax is : <%=islSyntax %>
-      </div> 
-      <div class="row" id="vid">
+
+    </style>
+  </head> 
+  <body> 
+    <div class="row" id="vid">
+      <div class="container">
+        <!-- <a href="/" class="btn"><i class="material-icons">arrow_back</i>Go Back</a> -->
+        <div id="syntaxChange">
+          <p>The Original syntax is : <%= normalSyntax%><br>The ISL syntax is : <%=islSyntax %></p>
+        </div>
         <div class="col-sm-12">
-          <img src="img/videoimg.jpg" width="500">
-          <video id="videoPlayer" width="650" controls muted="muted" autoplay>
-            <source src="/video" type="video/mp4" />
-          </video>
+          <div id="dispFlex2">
+            <!-- <div id="syntaxChange">
+              <p>The Original syntax is : <%= normalSyntax%><br>The ISL syntax is : <%=islSyntax %></p>
+            </div> -->
+            <!-- <img src="public/img/videoimg.jpg"> -->
+            <a href="/" class="btn"><i class="material-icons">arrow_back</i>&nbsp;Go Back</a>
+            <video id="videoPlayer" width="700" height="350" controls muted="muted" autoplay>
+              <source src="/video" type="video/mp4" />
+            </video> 
+          </div>
         </div>
       </div>
-
-    </div>
-    <%} else { %>
-      <div id="loader">
-        <div id="container">
-          <div class="cube" id="cube1"></div>
-          <div class="cube" id="cube2"></div>
-          <div class="cube" id="cube3"></div>
-          <div class="cube" id="cube4"></div>
-        </div>
-      </div>
-
-      <p id="textLoader"> <button class="btn btn-accept"> <a href="loading">Check </a></button>if done ! </p> <br>
-      <p id="textLoader2"> <button class="btn btn-accept"> <a href="/">Cancle </a></button> and go back </p>
-      <%}%>
-</body>
-
+       
+  </body>
 </html>
