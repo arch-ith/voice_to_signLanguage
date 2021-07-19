@@ -9,7 +9,7 @@ from conf import JAR_DIR
 
 os.environ['STANFORD_PARSER'] = JAR_DIR
 os.environ['STANFORD_MODELS'] = JAR_DIR
-os.environ['JAVAHOME'] = "C:/Program Files/Java/jdk-12.0.1/bin/java.exe"
+os.environ['JAVAHOME'] = "C:/Program Files/Java/jdk-14.0.2/bin/java.exe"
 nltk.download('wordnet')
 
 def filter_stop_words(words):
@@ -93,11 +93,13 @@ def convert_eng_to_isl(input_string):
 
     # Get most probable parse tree
     parse_tree = possible_parse_tree_list[0]
-    #print(parse_tree)
+    #print(parse_tree,"______________________")
 
     # Convert into tree data structure
     parent_tree = ParentedTree.convert(parse_tree)
-
+    
+    #print(parent_tree,"______________________")
+    
     modified_parse_tree = modify_tree_structure(parent_tree)
 
     parsed_sent = modified_parse_tree.leaves()
@@ -125,13 +127,15 @@ def isl(text):
     input_string = text.capitalize()
     # input_string = input_string.lower()
     isl_parsed_token_list = convert_eng_to_isl(input_string)
-
+    #print(isl_parsed_token_list,"_______________________")
     # lemmatize tokens
     lemmatized_isl_token_list = lemmatize_tokens(isl_parsed_token_list)
-
+    
+    #print(lemmatized_isl_token_list,"_______________________")
     # remove stop words
     filtered_isl_token_list = filter_stop_words(lemmatized_isl_token_list)
-
+    
+    #print(filtered_isl_token_list,"_______________________")
     isl_text_string = ""
 
     for token in filtered_isl_token_list:

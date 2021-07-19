@@ -17,19 +17,20 @@ def getLink(word):
     driver = webdriver.Chrome(PATH,options=options)
     #link to get videoptions=option 
     
-
-    """driver.get('https://www.talkinghands.co.in/video/'+word)
+    """
+    driver.get('https://www.talkinghands.co.in/video/'+word)
     time.sleep(0.5)
     try:  
-        value_xpath=driver.find_element_by_xpath('/html/body/div[1]/div/div[3]/div[2]/div/a')
+        value_xpath=driver.find_element_by_css_selector('iframe[id*=idfitvid]') 
+        print(value_xpath)
         link=value_xpath.get_attribute('src')
         print(link)
         return link
     except NoSuchElementException:
-        print("Not found in talking hands")"""
-
+        print("Not found in talking hands")
+    """
     driver.get("https://www.talkinghands.co.in/video/"+word+"mp4")
-    time.sleep(0.5)
+    time.sleep(0.1)
     try:
         value_xpath=driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/div/div[1]/div/div/div/video/source')
         link=value_xpath.get_attribute('src') 
@@ -52,4 +53,4 @@ def getLink(word):
         sss="nfth"
     #print("Link not found") 
     driver.close() 
-    return 0  
+    return 0    

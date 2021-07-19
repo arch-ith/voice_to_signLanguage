@@ -60,6 +60,8 @@ app.post("/speach", function (req, res) {
 });
 //done request video 
 app.get("/video", function (req, res) {
+  
+  //res.sendFile('/data/samples/output/clipg.mp4', { root: __dirname });  
   const range = req.headers.range;
   if (!range) {
     res.status(400).send("Requires Range header");
